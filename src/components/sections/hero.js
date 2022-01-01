@@ -12,15 +12,15 @@ import Social from "../social"
 import { lightTheme, darkTheme } from "../../styles/theme"
 
 const StyledSection = styled.section`
-  width: 100%;
+  width: auto;
   height: auto;
   background: ${({ theme }) => theme.colors.background};
 `
 
 const StyledContentWrapper = styled(ContentWrapper)`
   && {
-    width: 100%;
-    height: 100%;
+    width: 200%;
+    height: 200%;
     min-height: 60vh;
     display: flex;
     flex-direction: column;
@@ -36,16 +36,16 @@ const StyledContentWrapper = styled(ContentWrapper)`
     }
     .emoji {
       margin-left: 0.75rem;
-      width: 2.2rem;
-      height: 2.2rem;
+      width: 3.2rem;
+      height: 3.2rem;
       @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
         margin-left: 1rem;
-        width: 3rem;
-        height: 3rem;
+        width: 1rem;
+        height: 1rem;
       }
     }
     .title {
-      margin-bottom: 1.5rem;
+      margin-bottom: 2.5rem;
       @media (min-width: ${({ theme }) => theme.breakpoints.sm}) {
         margin-bottom: 0;
       }
@@ -109,27 +109,27 @@ const Hero = ({ content }) => {
           animate={gControls}
           data-testid="animated-heading"
         >
-          <h1 className="title">
-            <div className="greetings">
-              {frontmatter.greetings}
-              <motion.div
-                animate={eControls}
-                style={{ originX: 0.7, originY: 0.7 }}
-              >
-                <Img
-                  className="emoji"
-                  fluid={frontmatter.icon.childImageSharp.fluid}
-                />
-              </motion.div>
-            </div>
-            {frontmatter.title}
-          </h1>
-          <h2 className="subtitle">
-            {frontmatter.subtitlePrefix}{" "}
-            <AnimatedUnderlining animate={uControls} big>
-              {frontmatter.subtitle}
-            </AnimatedUnderlining>
-          </h2>
+          <p>
+            <h1 className="title">
+              <div className="greetings">
+                {frontmatter.greetings}
+                <motion.div
+                  animate={eControls}
+                  style={{ originX: 0.7, originY: 0.7 }}
+                ></motion.div>
+              </div>
+              {frontmatter.title}
+            </h1>
+          </p>
+
+          <p>
+            <h3 className="subtitle">
+              {frontmatter.subtitlePrefix}{" "}
+              <AnimatedUnderlining animate={uControls} big>
+                {frontmatter.subtitle}
+              </AnimatedUnderlining>
+            </h3>
+          </p>
           <div className="description">
             <MDXRenderer>{body}</MDXRenderer>
           </div>

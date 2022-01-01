@@ -7,10 +7,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Hero from "../components/sections/hero"
 import Articles from "../components/sections/articles"
-import About from "../components/sections/about"
-import Interests from "../components/sections/interests"
-import Projects from "../components/sections/projects"
-import Contact from "../components/sections/contact"
+import Join from "../components/sections/join"
+import Parents from "../components/sections/parents"
+import Judging from "../components/sections/judging"
+import Members from "../components/sections/members"
+import Results from "../components/sections/results"
 import { seoTitleSuffix } from "../../config"
 
 const IndexPage = ({ data }) => {
@@ -38,10 +39,11 @@ const IndexPage = ({ data }) => {
         <Hero content={data.hero.edges} />
         {/* Articles is populated via Medium RSS Feed fetch */}
         <Articles />
-        <About content={data.about.edges} />
-        <Interests content={data.interests.edges} />
-        <Projects content={data.projects.edges} />
-        <Contact content={data.contact.edges} />
+        <Join content={data.join.edges} />
+        <Members content={data.members.edges} />
+        <Judging content={data.judging.edges} />
+        <Parents content={data.parents.edges} />
+        <Results content={data.results.edges} />
       </Layout>
     </GlobalStateProvider>
   )
@@ -75,18 +77,11 @@ export const pageQuery = graphql`
             title
             subtitlePrefix
             subtitle
-            icon {
-              childImageSharp {
-                fluid(maxWidth: 60, quality: 90) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
           }
         }
       }
     }
-    about: allMdx(filter: { fileAbsolutePath: { regex: "/index/about/" } }) {
+    join: allMdx(filter: { fileAbsolutePath: { regex: "/index/join/" } }) {
       edges {
         node {
           body
@@ -103,33 +98,9 @@ export const pageQuery = graphql`
         }
       }
     }
-    interests: allMdx(
-      filter: { fileAbsolutePath: { regex: "/index/interests/" } }
-    ) {
-      edges {
-        node {
-          exports {
-            shownItems
-            interests {
-              name
-              icon {
-                childImageSharp {
-                  fixed(width: 20, height: 20, quality: 90) {
-                    ...GatsbyImageSharpFixed
-                  }
-                }
-              }
-            }
-          }
-          frontmatter {
-            title
-          }
-        }
-      }
-    }
-    projects: allMdx(
+    members: allMdx(
       filter: {
-        fileAbsolutePath: { regex: "/index/projects/" }
+        fileAbsolutePath: { regex: "/index/members/" }
         frontmatter: { visible: { eq: true } }
       }
       sort: { fields: [frontmatter___position], order: ASC }
@@ -142,7 +113,6 @@ export const pageQuery = graphql`
             category
             emoji
             external
-            github
             screenshot {
               childImageSharp {
                 fluid(maxWidth: 400, quality: 90) {
@@ -159,8 +129,46 @@ export const pageQuery = graphql`
         }
       }
     }
-    contact: allMdx(
-      filter: { fileAbsolutePath: { regex: "/index/contact/" } }
+    judging: allMdx(
+      filter: { fileAbsolutePath: { regex: "/index/judging/" } }
+    ) {
+      edges {
+        node {
+          body
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                fluid(maxWidth: 400, quality: 90) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    parents: allMdx(
+      filter: { fileAbsolutePath: { regex: "/index/parents/" } }
+    ) {
+      edges {
+        node {
+          body
+          frontmatter {
+            title
+            image {
+              childImageSharp {
+                fluid(maxWidth: 400, quality: 90) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    results: allMdx(
+      filter: { fileAbsolutePath: { regex: "/index/results/" } }
     ) {
       edges {
         node {
@@ -168,7 +176,6 @@ export const pageQuery = graphql`
           frontmatter {
             title
             name
-            email
             profileImage {
               childImageSharp {
                 fluid(maxWidth: 400, quality: 90) {
@@ -176,6 +183,9 @@ export const pageQuery = graphql`
                 }
               }
             }
+            buttonVisible
+            buttonUrl
+            buttonText
           }
         }
       }

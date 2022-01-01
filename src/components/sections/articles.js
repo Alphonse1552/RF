@@ -150,7 +150,7 @@ const Articles = () => {
       animate={articlesControls}
     >
       <StyledContentWrapper>
-        <h3 className="section-title">Latest Articles</h3>
+        <h3 className="section-title">Strictly Speaking</h3>
         <div className="articles">
           {articles
             ? articles.map(item => (
@@ -173,7 +173,7 @@ const Articles = () => {
                   </div>
                 </a>
               ))
-            : [...Array(MAX_ARTICLES <= 3 ? MAX_ARTICLES : 3)].map((i, key) => (
+            : [...Array(MAX_ARTICLES <= 6 ? MAX_ARTICLES : 6)].map((i, key) => (
                 <div className="card" key={key}>
                   <SkeletonLoader
                     height="1.5rem"
