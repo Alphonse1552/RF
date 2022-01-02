@@ -5,6 +5,7 @@ module.exports = {
   siteShortTitle: "Ridge Forensics", // Used as logo text in header, footer, and splash screen
   siteLanguage: "en_US",
   siteIcon: "content/favicon.png", // Relative to gatsby-config
+  siteUrl: "https://rfsitetest.netlify.app/",
   useCookieBar: false, // If you use Google Analytics and want to be GDPR-compliant, set it to true
   googleAnalyticsTrackingId: "", // e.g. UA-XXXXXX-X
 
