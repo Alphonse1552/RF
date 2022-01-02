@@ -1,7 +1,7 @@
 module.exports = {
   //-- SITE SETTINGS -----
   author: "Michael Moschello",
-  siteTitle: "RF Website",
+  siteTitle: "Ridge Forensics",
   siteShortTitle: "Ridge Forensics", // Used as logo text in header, footer, and splash screen
   siteLanguage: "en_US",
   siteIcon: "content/favicon.png", // Relative to gatsby-config
